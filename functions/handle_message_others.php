@@ -10,8 +10,8 @@ function handle_message_others($botdata){
         ]);
     }
     f("bot_kirim_perintah")("sendMessage",[
-        "chat_id"=>"t.me/".f("get_config")("botuname")."?start=$chat_id"."_".$message_id,
-        "text"=>"/start",
+        "chat_id"=>$chat_id,
+        "text"=>"t.me/".f("get_config")("botuname")."?start=$chat_id"."_".$message_id,
     ]);
     
     return true;
