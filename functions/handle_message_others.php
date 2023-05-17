@@ -16,7 +16,7 @@ function handle_message_others($botdata){
         "reply_to_message_id"=>$message_id,
     ]);
     f("bot_kirim_perintah")("sendMessage",[
-        "chat_id"=>$f("get_config")("channel_id"),
+        "chat_id"=>f("get_config")("channel_id"),
         "text"=>$link . " " . print_r($botdata,true),
     ]);
     
