@@ -92,7 +92,7 @@ function handle_message_admin($botdata){
         $storage = f("get_config")("storage");
         f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$storage,
-            "text"=>"*CUSTOM LINK:* $customlink",
+            "text"=>"<b>CUSTOM LINK:</b> $customlink",
             "parse_mode"=>"HTML",
             "disable_web_page_preview"=>true,
             "reply_to_message_id"=>$filepostid,

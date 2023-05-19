@@ -4,7 +4,7 @@ function handle_message_getfile($botdata){
         $get_msg_id = str_replace("/start ","",$botdata['text']);
         $chat_id = $botdata["chat"]["id"];
 
-        if(preg_match('/[^a-z]/i', substr($get_msg_id,0,1))){
+        if(preg_match('/[a-z]/i', substr($get_msg_id,0,1))){
             $get_msg_id = f("data_load")($get_msg_id,false);
             if(empty($get_msg_id)){
                 f("bot_kirim_perintah")("sendMessage",[
