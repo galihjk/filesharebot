@@ -22,7 +22,8 @@
         $link = "t.me/".f("get_config")("botuname")."?start=".$result["result"]["message_id"];
         f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$storage,
-            "text"=>"**LINK:** ".$link,
+            "text"=>"*LINK:* ".$link,
+            "parse_mode"=>"Markdown",
             "disable_web_page_preview"=>true,
             "reply_to_message_id"=>$result["result"]["message_id"],
         ]);
