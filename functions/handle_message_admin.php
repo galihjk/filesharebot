@@ -93,14 +93,14 @@ function handle_message_admin($botdata){
         f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$storage,
             "text"=>"*CUSTOM LINK:* $customlink",
-            "parse_mode"=>"Markdown",
+            "parse_mode"=>"HTML",
             "disable_web_page_preview"=>true,
             "reply_to_message_id"=>$filepostid,
         ]);
         f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$botdata["chat"]["id"],
             "text"=>"Berhasil! \n$customlink",
-            "parse_mode"=>"Markdown",
+            "parse_mode"=>"HTML",
             "disable_web_page_preview"=>true,
         ]);
         return true;
