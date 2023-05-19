@@ -8,17 +8,19 @@ function handle_message_getfile($botdata){
             "text"=>f("get_config")("storage") . "~$get_msg_id",
             "disable_web_page_preview"=>true,
         ]);
-        // $result = f("bot_kirim_perintah")("copyMessage",[
-        //     "chat_id"=>$chat_id,
-        //     "from_chat_id"=>$from_chat_id,
-        //     "message_id"=>$message_id,
-        // ]);
-        // if(!$result['ok']){
-        //     f("bot_kirim_perintah")("sendMessage",[
-        //         "chat_id"=>$chat_id,
-        //         "text"=>print_r($result,true),
-        //     ]);
-        // }
+
+        $result = f("bot_kirim_perintah")("copyMessage",[
+            "chat_id"=>$chat_id,
+            "from_chat_id"=>f("get_config")("storage"),
+            "message_id"=>$get_msg_id,
+        ]);
+
+        $result = f("bot_kirim_perintah")("sendMessage",[
+            "chat_id"=>f("get_config")("storage"),
+            "text"=>"Didownload oleh $chat_id",
+            "reply_to_message_id"=>$get_msg_id,
+        ]);
+
         return true;
     }
     else{

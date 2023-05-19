@@ -1,6 +1,14 @@
 <?php function handle_message_upload($botdata){
     $text = $botdata["text"] ?? "";
     if(f("str_is_diawali")($text,"/upload_")){
+        f("bot_kirim_perintah")("deleteMessage",[
+            'chat_id'=>$upload_chatid,
+            'message_id'=>$delete_msgid,
+        ]);
+        f("bot_kirim_perintah")("deleteMessage",[
+            'chat_id'=>$botdata["chat"]["id"],
+            'message_id'=>$botdata["message_id"],
+        ]);
         $explode = explode("_",$text);
         $upload_chatid = $explode[1];
         $upload_msgid = $explode[2];
@@ -23,10 +31,6 @@
             "text"=>$link,
             "reply_to_message_id"=>$upload_msgid,
             "disable_web_page_preview"=>true,
-        ]);
-        f("bot_kirim_perintah")("deleteMessage",[
-            'chat_id'=>$upload_chatid,
-            'message_id'=>$delete_msgid,
         ]);
         return true;
     }
