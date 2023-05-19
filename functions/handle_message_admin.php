@@ -5,7 +5,7 @@ function handle_message_admin($botdata){
     $admins = f("get_config")("bot_admins");
     $is_admin = in_array($userid,$admins);
     $text = $botdata["text"] ?? "";
-    if($is_admin and f("str_is_diawali")($text) == "/broadcast"){
+    if($is_admin and f("str_is_diawali")($text,"/broadcast")){
         if(empty($botdata['reply_to_message'])){
             f("bot_kirim_perintah")("sendMessage",[
                 "chat_id"=>$botdata["chat"]["id"],
