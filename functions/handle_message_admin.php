@@ -26,7 +26,6 @@ function handle_message_admin($botdata){
                     "message_id"=>$botdata['reply_to_message']["message_id"],
                 ]);
                 $cnt++;
-                usleep(2000);
             }
             f("bot_kirim_perintah")("sendMessage",[
                 "chat_id"=>$botdata["chat"]["id"],
