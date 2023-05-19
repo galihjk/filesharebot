@@ -1,7 +1,13 @@
 <?php function handle_message_storefile($botdata){
     $chat_id = $botdata["chat"]["id"];
     $message_id = $botdata["message_id"];
-    if(empty($botdata["text"])){
+    $admin_only = f("get_config")("upload_admin_only",false);
+    if(empty($botdata["text"]) and
+        (!$admin_only or (
+                $admin_only and in_array($botdata['from']['id'],f("get_config")("bot_admins",[]))
+            )
+        )
+    ){
         $result = f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$chat_id,
             "text"=>"Loading...",

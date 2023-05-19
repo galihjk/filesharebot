@@ -27,9 +27,16 @@
             "disable_web_page_preview"=>true,
             "reply_to_message_id"=>$result["result"]["message_id"],
         ]);
+        $is_admin = in_array($botdata['from']['id'],f("get_config")("bot_admins",[]));
+        $textresult = "*LINK:* ".$link;
+        if($is_admin){
+            $textresult .= "\n";
+            $textresult .= "/set_custom_link_".$result["result"]["message_id"];
+        }
         f("bot_kirim_perintah")("sendMessage",[
             "chat_id"=>$upload_chatid,
-            "text"=>$link,
+            "text"=>$textresult,
+            "parse_mode"=>"Markdown",
             "reply_to_message_id"=>$upload_msgid,
             "disable_web_page_preview"=>true,
         ]);
